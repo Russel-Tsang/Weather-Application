@@ -1,9 +1,13 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 const Weather = (props) => {
     return (
+        // display weather info
         <div>
-            {/* Weather conditions from API call */}
+            {props.country_name && props.city_name && <p>Location: {props.city_name} {props.country_name}</p>}
+            {props.temperature && <p>Temperature: {props.temperature}</p>}
+            {props.description && <p>Conditions:  {props.description}</p>}
+
         </div>
     )
 }
