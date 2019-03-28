@@ -9,7 +9,8 @@ export default class App extends Component {
     city_name: undefined,
     country_name: undefined,
     temperature: undefined,
-    description: undefined
+    description: undefined,
+    error: undefined
   }
 
   // OpenWeatherMap API: Retrieve data  
@@ -28,12 +29,15 @@ export default class App extends Component {
     console.log(response);
 
     // set state based on response variable
-    this.setState({
-      city_name: response.name,
-      country_name: response.sys.country,
-      temperature: response.main.temp,
-      description: response.weather[0].description
-    })
+    if (city && country) {
+      this.setState({
+        city_name: response.name,
+        country_name: response.sys.country,
+        temperature: response.main.temp,
+        description: response.weather[0].description
+      })
+    }
+    else this.setState({ error: "Error: Please enter a city and country" });
   }
 
   render() {
@@ -48,6 +52,7 @@ export default class App extends Component {
           city_name={this.state.city_name}
           temperature={this.state.temperature}
           description={this.state.description}
+          error={this.state.error}
         />
       </div>
     );
