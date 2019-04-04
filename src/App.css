@@ -1,1 +1,53 @@
- 
+.landing-display {
+    background-image: url('./assets/landing_banner.jpg');
+    background-size: cover;
+    height: 100vh;
+    /* for vertical alignment of text */
+    display:flex;
+    align-items: center;
+}
+
+.display-text {
+    width: 100%;    
+    color: white;
+    text-align: center;
+    font-size: 1.8em;
+    letter-spacing: 1px;
+}
+
+.display-text h1 {
+    font-size: 2.2em;
+    letter-spacing: 2px;
+}
+
+.input-side {
+    background-color: #f1f1f1;
+    padding-top: 150px;
+}
+
+/* .form {
+    text-align: center;
+} */
+
+.form input {
+    background-color:rgba(0, 0, 0, 0);
+    border: none;
+    border-bottom: 2px black solid;
+    outline: none;
+    width: 300px;
+    font-size: 1.5em;
+}
+
+.form button {
+    background-color: black;
+    color: white;
+    width: 140px;
+    margin-left: 20px;
+
+}
+
+.weather-info {
+    font-size: 1.4em;
+    margin: 80px 20px 20px 20px;
+    line-height: 60px;
+}
