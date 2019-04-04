@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './App.css';
 import Title from './components/title';
 import Form from './components/form';
-import Conversions from './components/conversions';
 import Weather from './components/weather';
 
 export default class App extends Component {
@@ -42,14 +41,16 @@ export default class App extends Component {
         city_name: response.name,
         country_name: response.sys.country,
         temperature: temperature,
-        description: response.weather[0].description
+        description: response.weather[0].description,
+        error: undefined
       })
     }
-    else this.setState({ error: "Error: Please enter a city and country" });
+
+    else this.setState({ error: "Error: check the blank field/s" });
   }
 
   // change between fahrenheit and celcius based on argument (passed in from conversions component)
-  changeUnits = (units) => {
+  setUnits = (units) => {
     // convert to celcius
     if (this.state.fahrenheit && units === 'C') this.setState({ fahrenheit: false });
     // check: [state.temperature exists to prevent NaN], [state.fahrenheit is true], [user wants to convert to Celcius]
@@ -65,27 +66,30 @@ export default class App extends Component {
     if (this.state.temperature && !this.state.fahrenheit && units === 'F') {
       let temperature = this.state.temperature;
       temperature = Math.round((temperature * (9 / 5)) + 32);
-      this.setState({ temperature });
     }
   }
 
   render() {
     return (
-      <div>
-        <Title />
-        <Form
-          loadWeather={this.getWeather}
-        />
-        <Conversions
-          changeUnits={this.changeUnits}
-        />
-        <Weather
-          country_name={this.state.country_name}
-          city_name={this.state.city_name}
-          temperature={this.state.temperature}
-          description={this.state.description}
-          error={this.state.error}
-        />
+      <div className="container-fluid">
+        <div className="row">
+          <div className="col-lg-5" style={{ 'padding': '0' }}>
+            <Title />
+          </div>
+          <div className="col-lg-7 input-side">
+            <Form
+              loadWeather={this.getWeather}
+              setUnits={this.setUnits}
+            />
+            <Weather
+              country_name={this.state.country_name}
+              city_name={this.state.city_name}
+              temperature={this.state.temperature}
+              description={this.state.description}
+              error={this.state.error}
+            />
+          </div>
+        </div>
       </div>
     );
   }
