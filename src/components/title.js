@@ -2,9 +2,11 @@ import React from 'react';
 
 const Title = (props) => {
     return (
-        <div>
-            <h1>Rain || Shine ?</h1>
-            <p>Enter your location to find out...</p>
+        <div className="landing-display">
+            <div className="display-text">
+                <h1>Need an Umbrella?</h1>
+                <p>Enter your location to check</p>
+            </div>
         </div>
     )
 }

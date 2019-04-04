@@ -4,8 +4,20 @@ class Conversions extends Component {
     render() {
         return (
             <div>
-                <button onClick={() => this.props.changeUnits('F')}>Fahrenheit</button>
-                <button onClick={() => this.props.changeUnits('C')}>Celcius</button>
+                <button
+                    // onClick raises event from conversions.js => form.js => app.js, carrying argument of 'F'
+                    onClick={() => this.props.setUnits('F')}
+                    className='btn btn-light'
+                >
+                    Fahrenheit
+                </button>
+                <button
+                    // onClick raises event from conversions.js => form.js => app.js , carrying argument of 'C'
+                    onClick={() => this.props.setUnits('C')}
+                    className='btn btn-light'
+                >
+                    Celcius
+                </button>
             </div >
         )
     }
